@@ -1,0 +1,2 @@
+.header .search label.no-image::before { background-image: none; }
+.header .search input { border: 1px solid #cccccc; }
