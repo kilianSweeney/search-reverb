@@ -23,7 +23,7 @@ export class AppComponent {
     if ($event === null || $event.target.value.length > 3){
       this.noData = false;
       this.reverb.http.get(this.reverbUrl).subscribe( (data) => {
-        this.data = data.data;
+        this.data = (data as any).data;
         this.filteredData = this.updateFilteredData();
       });
     }
