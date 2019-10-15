@@ -30,15 +30,10 @@ export class AppComponent {
   }
 
   updateFilteredData = () => {
-    if (this.data.length === 0) { return []; }
-    if (this.filters.body === '' && this.filters.neck === '') { return this.data; }
-    const filteredData = [];
-    this.data.map( (item) => {
-      if (this.filters.neck.length > 0 && item.neck === this.filters.neck) {
-        if (this.filters.body === '' || this.filters.body.length > 0 && item.body === this.filters.body ) {filteredData.push(item); }
-      } else if (this.filters.body.length > 0 && item.body === this.filters.body ) {
-        if (this.filters.neck === '' || this.filters.neck.length > 0 && item.neck === this.filters.neck ) {filteredData.push(item); }
-      }
+    const filteredData = this.data.filter((item) => {
+      if (this.filters.body === '' && this.filters.neck === '') { return item; }
+      return ((this.filters.neck === '' || item.neck === this.filters.neck) ) &&
+      ((this.filters.body === '' || item.body === this.filters.body) );
     });
     return filteredData;
   }
