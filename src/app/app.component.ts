@@ -1,5 +1,6 @@
 import { Component, OnChanges } from '@angular/core';
 import { ReverbService } from './services/reverb.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -20,30 +21,6 @@ export class AppComponent {
 
 
   getData = ($event) => {
-    console.log('hello!!!');
-    this.reverb.http.post('https://app.close.com/hackwithus/d316a83d0deb6b64/', {
-      first_name : 'Kilian',
-      last_name : 'Sweeney',
-      email : 'kilian_sweeney@yahoo.com',
-      phone : '312-498-1820',
-      cover_letter : 'Good Afternoon! I\'m a full stack developer who has spent the past ten years ' +
-      'focusing on front end technologies and soft skills. I just spent five years helping to plan, build' +
-      'and ship a saas solution in the event management market place. I\m a great javascript developer and' +
-      'I\'m also handy with design skills and tools like Adobe Creative Suite. I look forward to hearing more' +
-      'about your opportunity!',
-      urls : 'My Porfolio: http://3tons.org/kiliansweeney/, My Github Profile: https://github.com/kilianSweeney' +
-      'My Linkedin Porfile: https://www.linkedin.com/in/kilian-sweeney-273b9118/'
-    },
-    {
-      headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
-      'Content-Type': 'application/json'
-      }
-}).subscribe(
-      response => console.log(response),
-      err => console.log(err)
-    );
     if ($event === null || $event.target.value.length > 3) {
       this.noData = false;
       this.reverb.http.get(this.reverbUrl).subscribe( (data) => {
